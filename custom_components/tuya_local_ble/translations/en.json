@@ -4,7 +4,7 @@
         "no_unconfigured_devices": "No unconfigured devices found."
       },
       "error": {
-        "device_not_registered": "Device is not registered, please check config."
+        "invalid_credentials": "Could not validate these credentials, please check the required fields."
       },
       "flow_title": "{name}",
       "step": {
@@ -13,6 +13,20 @@
             "address": "Tuya BLE device"
           },
           "description": "Select Tuya BLE device to setup. Device must be registered in the cloud using the mobile application. It's better to unbind the device from Tuya Bluetooth gateway, if any."
+        },
+        "credentials": {
+          "data": {
+            "uuid": "UUID",
+            "local_key": "Local key",
+            "device_id": "Device ID",
+            "category": "Category",
+            "product_id": "Product ID",
+            "device_name": "Device name (optional)",
+            "product_name": "Product name (optional)",
+            "product_model": "Product model (optional)",
+            "ble_unlock_check": "BLE unlock check (optional, lock devices only)"
+          },
+          "description": "This device isn't in devices.json. Enter its credentials directly - you can obtain the UUID, local key, device ID, category and product ID using TinyTuya (https://github.com/jasonacox/tinytuya) against your Tuya cloud account."
         }
       }
     },
@@ -66,6 +80,12 @@
         },
         "countdown_duration": {
           "name": "Irrigation duration"
+        },
+        "countdown_1": {
+          "name": "Countdown 1"
+        },
+        "countdown_2": {
+          "name": "Countdown 2"
         }
       },
       "select": {
@@ -92,11 +112,20 @@
         },
         "lock_direction": {
           "name": "Lock Direction"
-        }  
+        },
+        "weather_delay": {
+          "name": "Weather delay 1"
+        },
+        "weather_delay2": {
+          "name": "Weather delay 2"
+        }
       },
       "binary_sensor": {
         "low_battery": {
           "name": "Low"
+        },
+        "fault": {
+          "name": "Fault"
         }
       },
       "sensor": {
@@ -167,6 +196,28 @@
         },
         "propane": {
             "name": "Propane"
+        },
+        "use_time_1": {
+            "name": "Use time 1"
+        },
+        "use_time_2": {
+            "name": "Use time 2"
+        },
+        "status_1": {
+            "name": "Status 1",
+            "state": {
+              "manual": "Manual",
+              "auto": "Auto",
+              "idle": "Idle"
+            }
+        },
+        "status_2": {
+            "name": "Status 2",
+            "state": {
+              "manual": "Manual",
+              "auto": "Auto",
+              "idle": "Idle"
+            }
         }
       },
       "switch": {
@@ -220,7 +271,13 @@
         },            
         "water_valve": {
             "name": "Irrigation valve"
-        }    
+        },
+        "switch_1": {
+            "name": "Switch 1"
+        },
+        "switch_2": {
+            "name": "Switch 2"
+        }
       },
       "lock": {
         "manual_lock": {

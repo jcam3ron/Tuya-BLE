@@ -486,6 +486,43 @@ mapping: dict[str, TuyaBLECategorySensorMapping] = {
                     ),
                 ),
             ],
+            "qycalacn": [  # Hoselink Dual-Outlet Tap Timer
+                TuyaBLEBatteryMapping(dp_id=11),
+                TuyaBLESensorMapping(
+                    dp_id=111,
+                    description=SensorEntityDescription(
+                        key="use_time_1",
+                        device_class=SensorDeviceClass.DURATION,
+                        native_unit_of_measurement=UnitOfTime.SECONDS,
+                        state_class=SensorStateClass.MEASUREMENT,
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=110,
+                    description=SensorEntityDescription(
+                        key="use_time_2",
+                        device_class=SensorDeviceClass.DURATION,
+                        native_unit_of_measurement=UnitOfTime.SECONDS,
+                        state_class=SensorStateClass.MEASUREMENT,
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=112,
+                    description=SensorEntityDescription(
+                        key="status_1",
+                        device_class=SensorDeviceClass.ENUM,
+                        options=["manual", "auto", "idle"],
+                    ),
+                ),
+                TuyaBLESensorMapping(
+                    dp_id=113,
+                    description=SensorEntityDescription(
+                        key="status_2",
+                        device_class=SensorDeviceClass.ENUM,
+                        options=["manual", "auto", "idle"],
+                    ),
+                ),
+            ],
         },
     ),
 }

@@ -1180,7 +1180,6 @@ class TuyaBLEDevice:
         for packet in packets:
             if self._client:
                 try:
-                    # _LOGGER.debug("%s: Sending packet: %s", self.address, packet.hex())
                     await self._client.write_gatt_char(
                         self._characteristic_write,
                         packet,
@@ -1964,7 +1963,6 @@ class TuyaBLEDevice:
 
     def _notification_handler(self, _sender: int, data: bytearray) -> None:
         """Handle notification responses."""
-        _LOGGER.debug("%s: Packet received: %s", self.address, data.hex())
         self._last_rx_time = time.monotonic()
 
         pos: int = 0

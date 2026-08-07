@@ -294,6 +294,32 @@ mapping: dict[str, TuyaBLECategorySelectMapping] = {
             ],
         },
     ),
+    "ggq": TuyaBLECategorySelectMapping(
+        products={
+            "qycalacn": [  # Hoselink Dual-Outlet Tap Timer
+                TuyaBLESelectMapping(
+                    dp_id=117,
+                    description=SelectEntityDescription(
+                        key="weather_delay",
+                        icon="mdi:weather-rainy",
+                        options=["off", "1", "2", "3", "4", "5", "6", "7"],
+                        entity_category=EntityCategory.CONFIG,
+                        entity_registry_enabled_default=False,
+                    ),
+                ),
+                TuyaBLESelectMapping(
+                    dp_id=114,
+                    description=SelectEntityDescription(
+                        key="weather_delay2",
+                        icon="mdi:weather-rainy",
+                        options=["off", "1", "2", "3", "4", "5", "6", "7"],
+                        entity_category=EntityCategory.CONFIG,
+                        entity_registry_enabled_default=False,
+                    ),
+                ),
+            ],
+        },
+    ),
 }
 
 
