@@ -129,6 +129,8 @@
         }
       },
       "sensor": {
+        "normal_schedules": {"name": "Normal schedules"},
+        "cyclic_schedules": {"name": "Cyclic schedules"},
         "battery": {
           "name": "Battery"
         },

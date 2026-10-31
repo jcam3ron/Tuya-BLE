@@ -130,6 +130,8 @@
       }
     },
     "sensor": {
+      "normal_schedules": {"name": "Normal schedules"},
+      "cyclic_schedules": {"name": "Cyclic schedules"},
       "battery": {
         "name": "[%key:component::sensor::entity_component::battery::name%]"
       },

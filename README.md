@@ -169,7 +169,7 @@
     <tr>
       <td>Hoselink Dual-Outlet Tap Timer</td>
       <td>'qycalacn'</td>
-      <td>Two independent outlets: switch, countdown timer, usage/battery/status/fault sensors.</td>
+      <td>Two independent outlets: switches, countdowns, normal/cyclic schedules, weather delays, and usage/battery/status/fault sensors. See the <a href="docs/hoselink-tap-timer.md#watering-schedules">schedule actions guide</a>.</td>
     </tr>
   </tbody>
 </table>

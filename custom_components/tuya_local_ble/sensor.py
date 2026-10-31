@@ -43,6 +43,7 @@ from .const import (
     DOMAIN,
 )
 from .devices import TuyaBLEData, TuyaBLEEntity, TuyaBLEProductInfo
+from .schedule_sensor import WateringScheduleSensor, register_services
 from .tuya_ble import TuyaBLEDataPointType, TuyaBLEDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -622,7 +623,7 @@ async def async_setup_entry(
     """Set up the Tuya BLE sensors."""
     data: TuyaBLEData = hass.data[DOMAIN][entry.entry_id]
     mappings = get_mapping_by_device(data.device)
-    entities: list[TuyaBLESensor] = [
+    entities: list[SensorEntity] = [
         TuyaBLESensor(
             hass,
             data.coordinator,
@@ -644,4 +645,9 @@ async def async_setup_entry(
                     mapping,
                 )
             )
+    if data.device.category == "ggq" and data.device.product_id == "qycalacn":
+        entities.extend(
+            WateringScheduleSensor(hass, data, dp_id) for dp_id in (101, 102)
+        )
+        register_services()
     async_add_entities(entities)
