@@ -175,6 +175,9 @@
 </table>
 
 <h2 align="center">Contributing</h2>
+
+For an isolated Nix flake Home Assistant instance, see [local development](docs/local-development.md).
+
 <p align="center">
   Contributions are welcome! If you encounter issues or have suggestions for enhancements, please open an issue or create a pull request.
 </p>

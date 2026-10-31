@@ -1,0 +1,17 @@
+homeassistant:
+  name: Tuya BLE Development
+  time_zone: Australia/Hobart
+
+http:
+  server_host: 127.0.0.1
+  server_port: 8124
+
+frontend:
+config:
+bluetooth:
+history:
+logbook:
+recorder:
+
+logger:
+  default: info
