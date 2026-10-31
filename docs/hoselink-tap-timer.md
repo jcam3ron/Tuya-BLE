@@ -60,7 +60,30 @@ enabled flag, and settings. `Unknown` means no valid schedule report has arrived
 not an empty schedule list. IDs are scoped to the schedule type, shared between
 outlets, and are not renumbered when another entry is deleted.
 
-In **Developer tools > Actions**, choose one of these Tuya Local BLE actions and
+To manage schedules with prefilled forms, go to **Settings > Devices & services >
+Tuya Local BLE > Configure > Manage schedules**. The list includes both valves,
+normal and cyclic entries, their timing/repeat settings, and enabled state.
+Select an existing entry to open its prefilled edit form directly. Use the
+**Enabled** toggle to enable or disable it. Select **Add normal schedule** or
+**Add cyclic schedule** to create one.
+
+Press **Submit** to send the settings to the timer and complete the flow. To delete
+an existing entry, enable **Delete this schedule**, then press **Submit**. Deletion
+ignores other edits in the form. The flow completes only after the timer confirms
+the save or deletion. Close the dialog with **X** at any time before submitting to
+exit without sending changes.
+
+Editing prefills the current settings and retains the enabled state shown in the
+form. For normal schedules, weekdays apply only to **Selected weekdays**, while
+the first date and interval in days apply only to **Every X days**. All durations
+and cyclic intervals are minutes. Changes wait for confirmation from the timer;
+if a save fails, your entered values remain in the form. Check the reported list
+before retrying a create after a timeout. Schedule management does not reload the
+integration or alter connection settings. Both schedule sensors must be enabled
+and have received device data to manage both schedule types.
+
+For automations or direct action calls, in **Developer tools > Actions**, choose
+one of these Tuya Local BLE actions and
 target the corresponding schedule sensor:
 
 - **Set normal watering schedule**: create a schedule, or replace one by supplying

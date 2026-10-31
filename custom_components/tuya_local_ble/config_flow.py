@@ -37,6 +37,7 @@ from .const import (
 )
 from .devices import get_device_readable_name, get_short_address
 from .keyman import HASSTuyaBLEDeviceManager
+from .schedule_flow import ScheduleOptionsFlow
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -217,13 +218,32 @@ class TuyaBLEConfigFlow(ConfigFlow, domain=DOMAIN):
         )
 
 
-class TuyaBLEOptionsFlow(OptionsFlow):
+class TuyaBLEOptionsFlow(ScheduleOptionsFlow):
     """Handle Tuya BLE options."""
 
     async def async_step_init(
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
         """Manage options."""
+        data = self.hass.data.get(DOMAIN, {}).get(self.config_entry.entry_id)
+        device = data.device if data else None
+        if (
+            user_input is None
+            and getattr(device, "category", self.config_entry.options.get(CONF_CATEGORY))
+            == "ggq"
+            and getattr(device, "product_id", self.config_entry.options.get(CONF_PRODUCT_ID))
+            == "qycalacn"
+        ):
+            return self.async_show_menu(
+                step_id="init",
+                menu_options=["manage_schedules", "connection_options"],
+            )
+        return await self.async_step_connection_options(user_input)
+
+    async def async_step_connection_options(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
+        """Manage connection behavior without changing schedule state."""
         if user_input is not None:
             # Preserve existing credential/options keys written at setup time.
             options = dict(self.config_entry.options)
@@ -233,7 +253,7 @@ class TuyaBLEOptionsFlow(OptionsFlow):
             return self.async_create_entry(title="", data=options)
 
         return self.async_show_form(
-            step_id="init",
+            step_id="connection_options",
             data_schema=vol.Schema(
                 {
                     vol.Optional(
